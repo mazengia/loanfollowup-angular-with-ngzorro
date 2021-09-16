@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import {NzLayoutModule} from 'ng-zorro-antd/layout';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import { MainNavComponent } from './pages/main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
         }
       }
     ),
-    HttpClientModule
+    HttpClientModule,
+    NzLayoutModule,
+    NzButtonModule
 
   ],
   providers: [],
