@@ -8,4 +8,4 @@ RUN npm run build
 
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /usr/src/app/dist/loanFollowUpFrontend /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/loan-follow-up-frontend /usr/share/nginx/html
