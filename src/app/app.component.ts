@@ -8,35 +8,36 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'loan-follow-up-frontend';
+  isCollapsed = false;
 
-  constructor(private oauthService:OAuthService,private router:Router){}
+  toggleCollapsed(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
+  constructor(private oauthService: OAuthService, private router: Router) {}
   ngOnInit(): void {
     this.init();
 
   }
 
-  public login()
-  {
+  public login() {
     this.oauthService.initImplicitFlow();
   }
 
-  public logout()
-  {
+  public logout() {
     this.oauthService.logOut();
   }
 
-  public get userName()
-  {
-    var cliams = this.oauthService.getIdentityClaims();
-    if(!cliams) return null;
+  public get userName() {
+    const cliams = this.oauthService.getIdentityClaims();
+    if (!cliams) { return null; }
 
-    return (<any>cliams).given_name;
+    return (cliams as any).given_name;
   }
 
-  public init()
-  {
+  public init() {
+    // tslint:disable-next-line:no-unused-expression
     this.router.navigate['/'];
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndLogin();

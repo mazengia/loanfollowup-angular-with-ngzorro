@@ -10,30 +10,27 @@ import { AuthService } from 'src/app/services/auth.service';
 export class WelcomeComponent implements OnInit {
 
   constructor(
-    private http:HttpClient,
-    private authService:AuthService
+    private http: HttpClient,
+    private authService: AuthService
   ) { }
+
+  get userName() {
+    return (this.authService.getTokenDetails() as any).name;
+  }
+
+  roles: any[];
 
   ngOnInit(): void {
     this.loadBranches();
     this.getUserRoles();
   }
 
-  loadBranches()
-  {
+  loadBranches() {
     return this.http.get(`http://localhost:9090/branches`);
   }
 
-  get userName()
-  {
-    return (<any>this.authService.getTokenDetails()).name;
-  }
-
-  roles:any[];
-
-  getUserRoles()
-  {
-    this.roles = (<any>this.authService.getUserRoles()).roles;
+  getUserRoles() {
+    this.roles = (this.authService.getUserRoles() as any).roles;
   }
 
 }

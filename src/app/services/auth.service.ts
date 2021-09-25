@@ -1,36 +1,37 @@
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import jwtDecode from 'jwt-decode';
+import {Observable} from 'rxjs';
+import {Sector} from '../pages/model/sector';
+import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private authService:OAuthService) { }
+  constructor(private authService: OAuthService) { }
 
-  getUsername()
-  {
-    var claims = this.authService.getIdentityClaims();
-    if(claims)
-    {
+  getUsername() {
+    const claims = this.authService.getIdentityClaims();
+    if (claims) {
       return null;
     }
-    return  (<any>claims).given_name;
+    return  (claims as any).given_name;
   }
 
-  getToken()
-  {
+  getToken() {
     return localStorage.getItem('access_token');
   }
 
-  getTokenDetails()
-  {
+  getTokenDetails() {
     return jwtDecode(this.getToken());
   }
 
-  getUserRoles()
-  {
-    return (<any>this.getTokenDetails()).realm_access;
+  getUserRoles() {
+    return (this.getTokenDetails() as any).realm_access;
   }
+
+
 }
