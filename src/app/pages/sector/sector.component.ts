@@ -14,7 +14,6 @@ export class SectorComponent implements OnInit , AfterContentChecked {
 
   allUserData: any;
   listOfDisplayData: any;
-  // @ts-ignore
   listOfData: DataItem[] = [];
   validateForm: FormGroup;
   constructor(private fb: FormBuilder, private sectorService: RequestService) {
@@ -23,16 +22,7 @@ export class SectorComponent implements OnInit , AfterContentChecked {
     });
   }
   ngOnInit(): void {
-    this.sectorService.getSector().subscribe( data => {
-        this.allUserData = data;
-        data.forEach((value) => {
-           const variab = {
-            name: value.name
-          };
-           this.listOfData.push(variab);
-           this.listOfDisplayData = [...this.listOfData];
-        }); },
-      error => {console.log( error ); });
+ this.getSectorData();
   }
   open(): void {   this.visibleDrawer = true;
   }
@@ -65,10 +55,6 @@ export class SectorComponent implements OnInit , AfterContentChecked {
 
   ngAfterContentChecked(): void {
   }
-
-
-
-
   reset(): void {
     this.searchValue = '';
     this.search();
@@ -78,5 +64,17 @@ export class SectorComponent implements OnInit , AfterContentChecked {
     this.visible = false;
     // @ts-ignore
     this.listOfDisplayData = this.listOfData.filter((item: DataItem) => item.username.indexOf(this.searchValue) !== -1);
+  }
+  getSectorData(){
+    this.sectorService.getSector().subscribe( data => {
+        this.allUserData = data;
+        data.forEach((value) => {
+          const variab = {
+            name: value.name
+          };
+          this.listOfData.push(variab);
+          this.listOfDisplayData = [...this.listOfData];
+        }); },
+      error => {console.log( error ); });
   }
 }
