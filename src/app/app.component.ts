@@ -2,7 +2,7 @@ import { authConfig } from './config/authConfig';
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
-
+import {AuthService} from "./services/auth.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,10 +15,13 @@ export class AppComponent implements OnInit {
   toggleCollapsed(): void {
     this.isCollapsed = !this.isCollapsed;
   }
-  constructor(private oauthService: OAuthService, private router: Router) {}
+  constructor(private oauthService: OAuthService, private router: Router, private authService: AuthService) {}
+
+  get authenticatedUserName() {
+    return (this.authService.getTokenDetails() as any).name;
+  }
   ngOnInit(): void {
     this.init();
-
   }
 
   public login() {
@@ -37,7 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   public init() {
-    // tslint:disable-next-line:no-unused-expression
     this.router.navigate['/'];
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndLogin();

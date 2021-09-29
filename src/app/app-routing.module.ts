@@ -8,7 +8,7 @@ import {CategoryComponent} from './pages/category/category.component';
 
 
 const routes: Routes = [
-  {  path: '', pathMatch: 'full', redirectTo: '/welcome'  },
+  // {  path: '', pathMatch: 'full', redirectTo: '/welcome'  },
   {  path: 'welcome', component: WelcomeComponent  },
   {  path: 'sector', component: SectorComponent  },
   {  path: 'department', component: DepartmentComponent  },

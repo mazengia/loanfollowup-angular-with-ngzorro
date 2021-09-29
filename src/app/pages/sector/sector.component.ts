@@ -1,6 +1,6 @@
 import {AfterContentChecked, Component, OnInit} from '@angular/core';
 import {FormBuilder,  FormGroup,  Validators} from '@angular/forms';
-import {RequestService} from '../../services/request.service';
+import {SectorService} from "../../services/sector.service";
 
 @Component({
   selector: 'app-sector',
@@ -14,9 +14,10 @@ export class SectorComponent implements OnInit , AfterContentChecked {
 
   allUserData: any;
   listOfDisplayData: any;
+  // @ts-ignore
   listOfData: DataItem[] = [];
   validateForm: FormGroup;
-  constructor(private fb: FormBuilder, private sectorService: RequestService) {
+  constructor(private fb: FormBuilder, private sectorService: SectorService) {
     this.validateForm = this.fb.group({
       name: ['', [Validators.required, Validators.required]]
     });

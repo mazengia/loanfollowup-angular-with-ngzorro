@@ -76,5 +76,12 @@ nz-content {
 .inner-content {
   padding: 24px;
   background: #fff;
-  height: 100%;
+  height: 100VH;
+}
+.user-name{
+float: right;
+  margin-right: 40px;
+}
+.ht-number{
+  width: 10px;
 }
