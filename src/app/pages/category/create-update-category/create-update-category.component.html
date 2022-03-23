@@ -1,0 +1,13 @@
+<form nzLayout="vertical" nz-form [formGroup]="categoryForm"
+      (ngSubmit)="onSubmit()">
+  <nz-form-item>
+    <nz-form-label nzRequired>Title</nz-form-label>
+    <nz-form-control [nzSpan]="24" nzErrorTip="Please write title!">
+      <input class="input" nz-input formControlName="title" placeholder="Write title here"/>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" [disabled]="!categoryForm.valid">Save</button>
+</form>
+
+
+

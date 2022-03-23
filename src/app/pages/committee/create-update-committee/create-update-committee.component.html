@@ -1,0 +1,19 @@
+<form nzLayout="vertical" nz-form [formGroup]="committeeForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+    <nz-form-label nzRequired>Committee Title</nz-form-label>
+    <nz-form-control [nzSpan]="24" nzErrorTip="Please input committee title! ">
+      <input class="input" nz-input formControlName="title" placeholder="Write Committee title here"/>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Committee Type</nz-form-label>
+    <nz-form-control [nzSpan]="24" nzErrorTip="Please input committee type! ">
+      <nz-select class="input" formControlName="type" nzPlaceHolder="Write committee type here">
+        <nz-option nzValue="URGENT" nzLabel="URGENT"></nz-option>
+        <nz-option nzValue="APPROVAL" nzLabel="APPROVAL"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" [disabled]="!committeeForm.valid">Save</button>
+</form>

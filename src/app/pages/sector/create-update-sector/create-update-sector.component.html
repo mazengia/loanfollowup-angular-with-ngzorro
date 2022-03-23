@@ -1,0 +1,11 @@
+
+
+<form nzLayout="vertical" nz-form [formGroup]="sectorForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+       <nz-form-label nzRequired>name</nz-form-label>
+     <nz-form-control   [nzSpan]="24" nzErrorTip="Please input your name!">
+      <input class="input" nz-input formControlName="name" placeholder="Write name here"/>
+    </nz-form-control>
+  </nz-form-item>
+      <button nz-button nzType="primary" [disabled]="!sectorForm.valid">Save</button>
+</form>

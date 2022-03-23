@@ -1,0 +1,9 @@
+<form   nzLayout="vertical" nz-form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+      <nz-form-label    nzRequired>name</nz-form-label>
+     <nz-form-control   [nzSpan]="24"   nzErrorTip="Please input business name!">
+      <input class="input" nz-input formControlName="name" placeholder="Write business name here" />
+    </nz-form-control>
+  </nz-form-item>
+      <button  nz-button nzType="primary" [disabled]="!businessForm.valid">Save</button>
+</form>

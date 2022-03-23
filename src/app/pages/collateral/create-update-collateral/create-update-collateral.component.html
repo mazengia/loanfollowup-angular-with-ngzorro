@@ -1,0 +1,21 @@
+<form nzLayout="vertical" nz-form [formGroup]="collateralForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+    <nz-form-label nzRequired>name</nz-form-label>
+    <nz-form-control [nzSpan]="24" nzErrorTip="Please input Collaterals name!">
+      <input class="input" nz-input formControlName="name" placeholder="Write Collaterals name here"/>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <nz-form-label nzRequired>Degree</nz-form-label>
+    </nz-form-control>
+    <nz-form-control [nzSpan]="24" nzErrorTip="Please input Collaterals Degree!">
+      <nz-select class="input" formControlName="collateralDegree" nzPlaceHolder="Select Collaterals degree">
+        <nz-option nzValue="first" nzLabel="First Degree"></nz-option>
+        <nz-option nzValue="second" nzLabel="Second Degree"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+      <button nz-button nzType="primary" [disabled]="!collateralForm.valid">Save</button>
+</form>
